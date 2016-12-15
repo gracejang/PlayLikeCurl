@@ -150,23 +150,28 @@ public class Page {
 		if(res_id.isEmpty())return;
 
 		Bitmap bitmap = null;
-		InputStream is=null;
-		try {
-		 is = context.getAssets().open(res_id);
-			bitmap = BitmapFactory.decodeStream(is);
 
-		}
-		catch (IOException e)
-		{
-			
-		}
-		finally {
-			try {
-				is.close();
-				is = null;
-			} catch (IOException e) {
-			}
-		}
+        // If a Hashmap of Bitmaps were sent to the PageCurlAdapter, use it
+        if (PageCurlAdapter.getResourceMap() != null) {
+            Bitmap orig_bitmap = PageCurlAdapter.getResourceMap().get(res_id);
+            bitmap = orig_bitmap.copy(orig_bitmap.getConfig(), true);
+            // else grab bitmaps from assets folder
+        } else {
+            InputStream is = null;
+            try {
+                is = context.getAssets().open(res_id);
+                bitmap = BitmapFactory.decodeStream(is);
+
+            } catch (IOException e) {
+
+            } finally {
+                try {
+                    is.close();
+                    is = null;
+                } catch (IOException e) {
+                }
+            }
+        }
 		if(context.getResources().getConfiguration().orientation== Configuration.ORIENTATION_PORTRAIT)
 		bitmap_ratio=(float)bitmap.getHeight()/(float)bitmap.getWidth();
 		else
