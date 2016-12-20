@@ -63,7 +63,9 @@ public class Page {
 	public void calculateVerticesCoords(){
 		 h_w_ratio = bitmap_ratio;
 		 h_w_correction = (h_w_ratio-1f)/2.0f;
-
+		if (PageCurlAdapter.getResourceMap() != null) {
+			h_w_correction = 0;
+		}
 
 	}
 
