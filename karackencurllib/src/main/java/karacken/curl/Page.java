@@ -61,7 +61,7 @@ public class Page {
 	float h_w_ratio;
 	float h_w_correction;
 	public void calculateVerticesCoords(){
-		 h_w_ratio = bitmap_ratio * 1.05f;
+		 h_w_ratio = bitmap_ratio * 1.01f;
 		 h_w_correction = (h_w_ratio-1f)/2.0f;
 
 
