@@ -49,7 +49,7 @@ public class PageLeft extends Page {
 				if(isactive())
 					vertices[pos+2]=(float) (calc_r*(Math.sin(3.14/(GRID*0.50f)*(col-(dx))))+(calc_r*1.1f)); //Asin(2pi/wav*x)
 				float w_h_ratio = (1-calc_r) * 1.05f;
-				vertices[pos]=((float)col/(float)GRID*w_h_ratio)-mov_x-0.05f;
+				vertices[pos]=((float)col/(float)GRID*w_h_ratio)-mov_x-0.025f;
 
 
 				vertices[pos+1]=((float)row/(float)GRID*h_w_ratio)-h_w_correction;
